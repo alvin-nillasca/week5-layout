@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Week 5 - Data Dashboard",
-  description: "Next.js Data Dashboard built with Tailwind CSS",
+  title: "LearnMeow - Dashboard",
+  description: "Next.js Data Dashboard",
 };
 
 export default function RootLayout({
@@ -28,10 +31,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen bg-gray-50 flex flex-col font-sans">
-        <header className="bg-indigo-600 text-white p-4 font-bold text-lg shadow-md">
-          Dashboard Portal
-        </header>
-        <main className="flex-1 p-8">{children}</main>
+        <Header />
+        <div className="flex flex-1">
+          <Sidebar />
+          <main className="flex-1 p-8">{children}</main>
+        </div>
+        <Footer />
       </body>
     </html>
   );
